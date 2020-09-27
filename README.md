@@ -265,3 +265,43 @@ https://en.wikipedia.org/wiki/Arithmetic_logic_unit
 
 Ver código [integers.py](integers.py) e seus [testes](test_integers.py) assim como módulos importados.
 
+## Modelagem Orientada a Objetos
+
+### Indireção
+
+Indireção é a capacidade de referenciar algo usando um nome, referência ou continente em vez do valor em si.
+
+Ex.: Apelido quando se referencia à uma pessoa ao invés do nome da pessoa. Em computação, ponteiros ao invés de um valor específico na memória. O barramento da CPU, controlada pelo controle lógico.
+
+Design patterns são estratégias de indireção diferentes que emergem de acordo com cenários de complexidade.
+
+### Quando Procedural vira Orientado a Objetos?
+
+Recapitulando POO:
+
+- POO é uma forma imperativa
+- abstrai o processamento de dados através de mensagens
+- polimorfismo
+- encapsulamento por consequência
+
+![procedural_poo](images/procedural_poo.png)
+
+O que torna o segundo arranjo mais próximo de OOP é *como* se usa a estrutura de dados. No primeiro caso, estamos dependentes do fato de `types` ser um dicionário e que o dicionário armazena na ordem de inserção e toda a lógica está dentro do factory. Na segunda forma, o `factory` não sabe como o `types` resolve o problema. Podemos inclusive trocar a forma como o `IntervalMap` resolve o problema, a interface permaneceria a mesma. O `factory` apenas manda mensagens ao `types` para que este resolva o problema.
+
+### O que é modelagem?
+
+Crianças aprendem por modelagem, copiando os outros.
+
+Toda a criação começa de algo, podendo até ser cópia. Cópia é importante, para dar uma visão inicial.
+
+Síndrome do arquiteto astronauta: soluções imaginárias, famosos UML. Desenhar relações não significa desenhar fluxo. 
+
+Programar é um ato de modelar. Modelos ajudam a pensar e entender as fronteiras das coisas. É um mapa de tudo que precisa ser considerado. Topologia. É impossível programar aquilo que não se conhece.
+
+Modelagem é sobre conhecer as relações do seu software, as fronteiras e limites.
+
+Na abordagem procedural, começa a se pensar no todo. Na abordagem OOP, se pensa localmente e como aquela entidade se relaciona com as outras. Pois o todo será maior que a soma das partes.
+
+Ferramentas de modelagem: fala, visão, escrita, tato e o código.
+
+As técnicas servem para moldar nosso comportamento ao abordar o problema. Buscando mitigar repetições e aumentar a confiança.
