@@ -5,6 +5,8 @@ from binary import Byte, adder, multiplier, Word, Tribyte, DoubleWord
 
 class Integer(ABC):
     STORAGE = bytes
+    types = {}
+
     def __init__(self,n):
         self.value = self.STORAGE(n)
 
@@ -22,15 +24,14 @@ class Integer(ABC):
 
     @classmethod
     def factory(cls, n):
-        if n < 256:
-            klass = Int8
-        elif n < 65_536:
-            klass = Int16
-        elif n < 16_777_216:
-            klass = Int24
-        elif n < 4_294_967_296:
-            klass = Int32
+        for upper_bound, klass in cls.types.items():
+            if n < upper_bound:
+                break
         return klass(n)
+
+    @classmethod
+    def register(cls, upper_bound, klass):
+        cls.types[upper_bound] = klass
 
 class Int8(Integer):
     STORAGE = Byte
@@ -46,3 +47,8 @@ class Int24(Integer):
 
 class Int32(Integer):
     STORAGE = DoubleWord
+
+Integer.register(256, Int8)
+Integer.register(65_536, Int16)
+Integer.register(16_777_216, Int24)
+Integer.register(4_294_967_296, Int32)
