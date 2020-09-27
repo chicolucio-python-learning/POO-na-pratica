@@ -169,3 +169,38 @@ Busca por abstrações:
     - tipos de dados abstratos
     
 **Princípio da modularização**: se alguma parte do sistema depende das particularidades internas de outra parte, então a complexidade aumenta com o quadrado do tamanho do sistema. 
+
+## Métodos não são funções
+
+Ver código [geometry.py](geometry.py) e seus [testes](test_geometry.py).
+
+Verificando o comportamento do código resultante:
+
+```python
+>>> from geometry import Rect, Point
+>>> r = Rect(Point(1, 1), Point(3, 3))
+>>> r
+Rect(Point(1, 1), Point(3, 3))
+>>> r.center()
+Point(2.0, 2.0)
+>>> r.center
+<bound method Rect.center of Rect(Point(1, 1), Point(3, 3))>
+>>> Rect.center
+<function geometry.Rect.center(self)>
+>>> getattr(r, 'center')
+<bound method Rect.center of Rect(Point(1, 1), Point(3, 3))>
+>>> r.__dict__
+{'topLeft': Point(1, 1), 'botRight': Point(3, 3)}
+>>> c = r.center
+>>> c
+<bound method Rect.center of Rect(Point(1, 1), Point(3, 3))>
+>>> c()
+Point(2.0, 2.0)
+>>> c.__self__, c.__func__
+(Rect(Point(1, 1), Point(3, 3)), <function geometry.Rect.center(self)>)
+>>> #c()
+>>> c.__call__()
+Point(2.0, 2.0)
+>>> c.__func__(c.__self__)
+Point(2.0, 2.0)
+```
