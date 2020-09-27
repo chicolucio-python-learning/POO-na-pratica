@@ -16,8 +16,9 @@ def select(n):
 
 
 class Integer(ABC):
+    STORAGE = bytes
     def __init__(self,n):
-        self.value = bytes(n)
+        self.value = self.STORAGE(n)
 
     def __add__(self, other):
         sum_ = adder(self.value, other.value)
@@ -35,20 +36,16 @@ class Integer(ABC):
 
 
 class Int8(Integer):
-    def __init__(self, n):
-        self.value = Byte(n)
+    STORAGE = Byte
 
 
 class Int16(Integer):
-    def __init__(self, n):
-        self.value = Word(n)
+    STORAGE = Word
 
 
 class Int24(Integer):
-    def __init__(self, n):
-        self.value = Tribyte(n)
+    STORAGE = Tribyte
 
 
 class Int32(Integer):
-    def __init__(self, n):
-        self.value = DoubleWord(n)
+    STORAGE = DoubleWord
