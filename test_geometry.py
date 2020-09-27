@@ -7,6 +7,7 @@ def test_rect():
     assert r.topLeft == Point(1, 1)
     assert r.botRight == Point(3, 3)
     assert r.center() == Point(2, 2)
+    assert repr(r) == 'Rect(Point(1, 1), Point(3, 3))'
 
 
 def test_point():

@@ -15,6 +15,9 @@ class Point:
     def __truediv__(self, scalar):
         return self.__class__(self.x / scalar, self.y / scalar)
 
+    def __repr__(self):
+        return f'{self.__class__.__name__}({self.x}, {self.y})'
+
 
 class Rect:
     def __init__(self, topLeft, botRight):
@@ -23,3 +26,6 @@ class Rect:
 
     def center(self):
         return (self.topLeft + self.botRight) / 2
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}({self.topLeft!r}, {self.botRight!r})'
