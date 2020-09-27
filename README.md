@@ -204,3 +204,62 @@ Point(2.0, 2.0)
 >>> c.__func__(c.__self__)
 Point(2.0, 2.0)
 ```
+
+## Trabalhando com hierarquia e polimorfismo
+
+Imagine:
+
+- um computador sem capacidade aritmética
+- sem números
+- só com operações sobre bits
+    - and: &
+    - or: |
+    - xor: ^
+    - not: ~
+    - shift left: <<
+    - shift right: >>
+    
+Reconstruindo as operações:
+
+| Tipo | Tamanho armazenamento | Faixa valores |
+| --- | --- | --- |
+| byte | 1 byte | 0 a 255 |
+| word | 2 bytes | 0 a 65.535 |
+| tribyte | 3 bytes | 0 a 16.777.215 |
+| double word | 4 bytes | 0 a 4.294.967.295 |
+
+### Aritmética com bits
+
+#### Adição
+
+![adicao01](images/adicao01.png)
+
+![adicao02](images/adicao02.png)
+
+A multiplicação pode ser considerada uma soma com um deslocamento:
+
+![multiplicacao01](images/multiplicacao01.png)
+
+Ver código [binary.py](binary.py) e seus respectivos [testes](test_binary.py).
+
+```python
+>>> from binary import Byte, Word, Tribyte, adder, multiplier
+>>> from binary import fulladder
+>>> fulladder(1, 0, 0)
+(1, 0)
+>>> fulladder(1, 1, 0)
+(0, 1)
+>>> adder(Byte(3), Byte(4))
+7
+>>> multiplier(Byte(2), Byte(3))
+6
+```
+
+
+### Reolvendo o problema de inteiros
+
+Referências:
+
+https://pt.wikipedia.org/wiki/Circuito_aritm%C3%A9tico
+
+https://en.wikipedia.org/wiki/Arithmetic_logic_unit
