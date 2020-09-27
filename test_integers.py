@@ -50,3 +50,13 @@ def test_int32():
     assert Int32(16_777_215) + Int32(1) == Int32(16_777_216)
 
     assert Int32(16_777_216) * Int32(2) == Int32(33_554_432)
+
+def test_scale_up():
+    assert Int8(255) + Int8(1) == Int16(256)
+    assert Int8(128) * Int8(2) == Int16(256)
+
+    assert Int16(65_535) + Int16(1) == Int24(65_536)
+    assert Int16(32_768) * Int16(2) == Int24(65_536)
+
+    assert Int24(16_777_215) + Int24(1) == Int32(16_777_216)
+    assert Int24(8_388_608) * Int24(2) == Int32(16_777_216)
