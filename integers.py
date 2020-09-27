@@ -1,11 +1,12 @@
 from abc import ABC
 
+from adt import IntervalMap
 from binary import Byte, adder, multiplier, Word, Tribyte, DoubleWord
 
 
 class Integer(ABC):
     STORAGE = bytes
-    types = {}
+    types = IntervalMap()
 
     def __init__(self,n):
         self.value = self.STORAGE(n)
@@ -24,9 +25,7 @@ class Integer(ABC):
 
     @classmethod
     def factory(cls, n):
-        for upper_bound, klass in cls.types.items():
-            if n < upper_bound:
-                break
+        klass = cls.types.get(n)
         return klass(n)
 
     @classmethod
