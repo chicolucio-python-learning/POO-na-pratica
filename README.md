@@ -255,11 +255,13 @@ Ver código [binary.py](binary.py) e seus respectivos [testes](test_binary.py).
 6
 ```
 
-
-### Reolvendo o problema de inteiros
-
 Referências:
 
 https://pt.wikipedia.org/wiki/Circuito_aritm%C3%A9tico
 
 https://en.wikipedia.org/wiki/Arithmetic_logic_unit
+
+### Reolvendo o problema de inteiros
+
+Ver código [integers.py](integers.py) e seus [testes](test_integers.py) assim como módulos importados.
+
