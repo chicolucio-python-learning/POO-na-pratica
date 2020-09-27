@@ -33,6 +33,11 @@ class Integer(ABC):
     def register(cls, upper_bound, klass):
         cls.types[upper_bound] = klass
 
+
+def Int(n):
+    return Integer.factory(n)
+
+
 class Int8(Integer):
     STORAGE = Byte
 
