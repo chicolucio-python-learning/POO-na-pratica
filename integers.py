@@ -15,3 +15,6 @@ class Int8:
     def __mul__(self, other):
         mul_ = multiplier(self.value, other.value)
         return Int8(mul_)
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}({self.value!r})'
