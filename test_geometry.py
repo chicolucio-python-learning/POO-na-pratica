@@ -1,3 +1,6 @@
+from geometry import Point, Rect
+
+
 def test_rect():
     r = Rect(Point(1, 1), Point(3, 3))
     assert isinstance(r, Rect)
