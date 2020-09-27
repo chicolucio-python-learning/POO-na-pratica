@@ -60,3 +60,9 @@ def test_scale_up():
 
     assert Int24(16_777_215) + Int24(1) == Int32(16_777_216)
     assert Int24(8_388_608) * Int24(2) == Int32(16_777_216)
+
+def test_scale_down():
+    assert isinstance(Int8(254) + Int8(1), Int8)
+    assert isinstance(Int16(254) + Int16(1), Int8)
+    assert isinstance(Int24(65_534) + Int24(1), Int16)
+    assert isinstance(Int32(16_777_214) + Int32(1), Int24)
