@@ -1,4 +1,4 @@
-from binary import Byte, adder, multiplier, Word
+from binary import Byte, adder, multiplier, Word, Tribyte, DoubleWord
 
 
 class Int8:
@@ -33,3 +33,33 @@ class Int16:
     def __mul__(self, other):
         mul_ = multiplier(self.value, other.value)
         return Int16(mul_)
+
+class Int24:
+    def __init__(self, n):
+        self.value = Tribyte(n)
+
+    def __add__(self, other):
+        sum_ = adder(self.value, other.value)
+        return Int24(sum_)
+
+    def __eq__(self, other):
+        return self.value == other.value
+
+    def __mul__(self, other):
+        mul_ = multiplier(self.value, other.value)
+        return Int24(mul_)
+
+class Int32:
+    def __init__(self, n):
+        self.value = DoubleWord(n)
+
+    def __add__(self, other):
+        sum_ = adder(self.value, other.value)
+        return Int32(sum_)
+
+    def __eq__(self, other):
+        return self.value == other.value
+
+    def __mul__(self, other):
+        mul_ = multiplier(self.value, other.value)
+        return Int32(mul_)
