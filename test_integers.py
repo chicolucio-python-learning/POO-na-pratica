@@ -1,6 +1,6 @@
 import pytest
 
-from integers import Int8
+from integers import Int8, Int16
 
 
 def test_int8():
